@@ -1,18 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Routes } from '@angular/router';
 
 const routes: Routes = [{
   path: '',
   redirectTo: 'private/home',
   pathMatch: 'full',
-},
-{
-  path: 'private',
-  loadChildren: () =>
-    import('./private/private.module').then(
-      (m) => m.PrivateModule
-    ),
-  //canActivate: [AuthGuard]
 },
 {
   /*path: 'auth/login',
@@ -24,7 +17,10 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [
+    CommonModule
+  ]
 })
-export class AppRoutingModule { }
+
+export class PrivateRoutingModule { }
