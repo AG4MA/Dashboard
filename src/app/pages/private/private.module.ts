@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { PrivateRoutingModule } from './private-routing.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
-    PrivateRoutingModule
+    PrivateRoutingModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports: [],
 })
 export class PrivateModule { }
