@@ -13,6 +13,6 @@ import { HomeRoutingModule } from './home-routing.module';
     CommonModule,
     HomeRoutingModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports: [HomeComponent]
 })
 export class HomeModule { }
