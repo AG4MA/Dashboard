@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrivateComponent } from './pages/private/private.component';
 import { SharedModule } from './shared/shared.module';
+import { DatabaseComponent } from './pages/database/database.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrivateComponent,
+    DatabaseComponent,
   ],
   imports: [
     BrowserModule,
