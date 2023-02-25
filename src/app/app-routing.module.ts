@@ -5,7 +5,7 @@ import { PrivateComponent } from './pages/private/private.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'private/home',
+    redirectTo: 'private/app-navigation',
     pathMatch: 'full',
   },
   {
