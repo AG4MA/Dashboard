@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row">
-    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-3 m-3">
+<div class="container text-center">
+  <div class="row justify-content-between">
+    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-2 m-3">
       <mat-card-header class="justify-content-center">
         <mat-card-title>Casi Aperti</mat-card-title>
       </mat-card-header>
@@ -10,12 +10,14 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-3 m-3">
-      <mat-card-title>Prossimi meeting</mat-card-title>
+    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-2 m-3">
+      <mat-card-header class="justify-content-center">
+        <mat-card-title>Prossimi meeting</mat-card-title>
+      </mat-card-header>
     </mat-card>
 
-    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-3 m-3">
-      <mat-card-header>
+    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-2 m-3">
+      <mat-card-header class="justify-content-around">
         <mat-card-title>Totale Riscontri</mat-card-title>
       </mat-card-header>
       <mat-card-content>
@@ -23,13 +25,61 @@
         <p>Up from yesterday</p>
       </mat-card-content>
     </mat-card>
-    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-3 m-3">
-      <mat-card-header>
+    <mat-card class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-2 m-3">
+      <mat-card-header class="justify-content-center">
         <mat-card-title>Update</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <h3>5</h3>
         <p>Down From Last Week</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- FIX ME -- fix responsive -->
+  <div class="row justify-content-between">
+    <mat-card class="col-8 col-xs-8 m-3">
+      <mat-card-header>
+        <mat-card-title>Modifiche Recenti</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Responsabili</th>
+              <th scope="col">Variazioni</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let modifica of modificheRecenti">
+              <th scope="row">{{ modifica.data }}</th>
+              <td>{{ modifica.responsabile }}</td>
+              <td>{{ modifica.variazione }}</td>
+              <td>{{ modifica.totale }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary">See all</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="col-3 col-xs-8 m-3">
+      <mat-card-header>
+        <mat-card-title>Ultimi aggiornamenti</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let aggiornamento of ultimiAggiornamenti">
+              <th class="col" scope="row">Caso {{ aggiornamento.caso }}</th>
+              <th class="col" scope="row">{{ aggiornamento.stato }}</th>
+            </tr>
+          </tbody>
+        </table>
       </mat-card-content>
     </mat-card>
   </div>
