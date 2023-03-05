@@ -1,1 +1,28 @@
-<p>team works!</p>
+<div class="p-3">
+  <mat-card class="">
+    <mat-card-header class="justify-content-center">
+      <mat-card-title>Team</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-flex flex-column align-items-center">
+      <mat-list class="w-100">
+        <div *ngFor="let membroTeam of team">
+          <mat-list-item class="w-100 d-flex justify-content-between">
+            <div mat-dialog-actions class="d-flex justify-content-between align-items-center m-2">
+              {{ membroTeam.cognome }} {{ membroTeam.nome }}
+              <mat-icon (click)="moreInfo(membroTeam)">more_vert</mat-icon>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="p-3">
+  <app-bacheca></app-bacheca>
+</div>
+
+<div class="p-3">
+  <app-calendar></app-calendar>
+</div>

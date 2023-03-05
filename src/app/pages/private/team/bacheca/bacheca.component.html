@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-header class="justify-content-center">
+    <mat-card-title> Bacheca </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <dx-html-editor #editor class="editor" valueType="html">
+      <dxo-image-upload class="uploader" [tabs]="['url', 'file']" uploadDirectory="/Images"> </dxo-image-upload>
+      <dxo-toolbar [multiline]="true">
+        <dxi-item name="undo"></dxi-item>
+        <dxi-item name="redo"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="size" [acceptedValues]="['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt']"></dxi-item>
+        <dxi-item name="font" [acceptedValues]="['Arial', 'Georgia', 'Tahoma', 'Times New Roman', 'Verdana']"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="bold"></dxi-item>
+        <dxi-item name="italic"></dxi-item>
+        <dxi-item name="strike"></dxi-item>
+        <dxi-item name="underline"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="alignLeft"></dxi-item>
+        <dxi-item name="alignCenter"></dxi-item>
+        <dxi-item name="alignRight"></dxi-item>
+        <dxi-item name="alignJustify"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="orderedList"></dxi-item>
+        <dxi-item name="bulletList"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="header" [acceptedValues]="[false, 1, 2, 3, 4, 5]"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="color"></dxi-item>
+        <dxi-item name="background"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="link"></dxi-item>
+        <dxi-item name="image"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+        <dxi-item name="clear"></dxi-item>
+        <dxi-item name="codeBlock"></dxi-item>
+        <dxi-item name="blockquote"></dxi-item>
+        <dxi-item name="separator"></dxi-item>
+      </dxo-toolbar>
+    </dx-html-editor>
+  </mat-card-content>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" class="m-3">Invio</button>
+    <button mat-raised-button class="m-3" (click)="cancella()">Cancella</button>
+  </div>
+</mat-card>
