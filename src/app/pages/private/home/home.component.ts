@@ -11,13 +11,29 @@ import { HomeService } from 'src/app/services/home.service';
 export class HomeComponent implements OnInit {
   modificheRecenti!: ModificaRecente[];
   ultimiAggiornamenti!: UltimoAggiornamento[];
+  columnsModificheRecenti = ['date', 'responsabili', 'variazioni', 'totale'];
+  columnsUltimiAggiornamenti = ['caso', 'stato'];
   constructor(
     private homeService: HomeService
   ) { }
 
   ngOnInit(): void {
-    this.modificheRecenti = this.homeService.getModificheRecenti();
-    this.ultimiAggiornamenti = this.homeService.getUltimiAggiornamenti();
+    // TO DO -- aggiungere caricamento
+    this.getData();
+    // this.getUltimiAggiornamenti();
+  }
+
+  getData() {
+    this.homeService.getModificheRecenti$().subscribe({
+      next: (modificheRes: any) => {
+        this.modificheRecenti = this.homeService.getModificheRecenti();
+        this.ultimiAggiornamenti = this.homeService.getUltimiAggiornamenti();
+      },
+      error: (e) => {
+        console.log(e);
+        // TO DO -- mostrare errore all'utente
+      }
+    });
   }
 
 }

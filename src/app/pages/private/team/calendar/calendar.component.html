@@ -1,0 +1,13 @@
+<mat-card class="demo-inline-calendar-card">
+  <mat-card-header class="justify-content-center">
+    <mat-card-title>Calendario</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+  </mat-card-content>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" class="m-3">Aggiungi</button>
+    <button mat-raised-button class="m-3">Modifica</button>
+    <button mat-raised-button style="background-color: #fa3a3a; color: white" class="m-3">Rimuovi</button>
+  </div>
+</mat-card>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { concatMap, map, of, switchMap } from 'rxjs';
 import { ModificaRecente } from '../models/modifica-recente.model';
 import { UltimoAggiornamento } from '../models/ultimi-aggionamenti.model';
 
@@ -6,12 +7,12 @@ import { UltimoAggiornamento } from '../models/ultimi-aggionamenti.model';
   providedIn: 'root'
 })
 export class HomeService {
-  modificheRecenti: ModificaRecente[] = [];
-  ultimiAggiornamenti: UltimoAggiornamento[] = [];
+  private modificheRecenti: ModificaRecente[] = [];
+  private ultimiAggiornamenti: UltimoAggiornamento[] = [];
   constructor() { }
 
-  getModificheRecenti() {
-    return this.modificheRecenti = [
+  getModificheRecenti$() {
+    return of(this.modificheRecenti = [
       {
         data: '02 Jan 2021',
         responsabile: 'Alex Doe',
@@ -66,11 +67,16 @@ export class HomeService {
         variazione: 'Delivered',
         totale: 1
       },
-    ];
+    ])
+      .pipe(
+        concatMap((res: any) => {
+          return this.getUltimiAggiornamenti$();
+        }),
+      );
   }
 
-  getUltimiAggiornamenti() {
-    return this.ultimiAggiornamenti = [
+  getUltimiAggiornamenti$() {
+    return of(this.ultimiAggiornamenti = [
       {
         caso: 'n.34',
         stato: 'Aperta'
@@ -99,6 +105,19 @@ export class HomeService {
         caso: 'n.19',
         stato: 'Modifica'
       },
-    ];
+    ])
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
+
+  getUltimiAggiornamenti() {
+    return this.ultimiAggiornamenti;
+  }
+
+  getModificheRecenti() {
+    return this.modificheRecenti;
   }
 }

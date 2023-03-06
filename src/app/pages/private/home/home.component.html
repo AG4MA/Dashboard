@@ -36,51 +36,52 @@
     </mat-card>
   </div>
 
-  <!-- FIX ME -- fix responsive -->
-  <div class="row justify-content-between">
-    <mat-card class="col-8 col-xs-8 m-3">
-      <mat-card-header>
-        <mat-card-title>Modifiche Recenti</mat-card-title>
+  <div class="row justify-content-center p-2">
+    <div class="col-lg-6 col-sm-12">
+      <mat-card-header class="justify-content-center">
+        <mat-card-title> Modifiche Recenti </mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Responsabili</th>
-              <th scope="col">Variazioni</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let modifica of modificheRecenti">
-              <th scope="row">{{ modifica.data }}</th>
-              <td>{{ modifica.responsabile }}</td>
-              <td>{{ modifica.variazione }}</td>
-              <td>{{ modifica.totale }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </mat-card-content>
+      <table mat-table [dataSource]="modificheRecenti" class="mat-elevation-z8">
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.data }}</td>
+        </ng-container>
+        <ng-container matColumnDef="responsabili">
+          <th mat-header-cell *matHeaderCellDef>Responsabili</th>
+          <td mat-cell *matCellDef="let element">{{ element.responsabile }}</td>
+        </ng-container>
+        <ng-container matColumnDef="variazioni">
+          <th mat-header-cell *matHeaderCellDef>Variazioni</th>
+          <td mat-cell *matCellDef="let element">{{ element.variazione }}</td>
+        </ng-container>
+        <ng-container matColumnDef="totale">
+          <th mat-header-cell *matHeaderCellDef>Totale</th>
+          <td mat-cell *matCellDef="let element">{{ element.totale }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsModificheRecenti"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsModificheRecenti"></tr>
+      </table>
       <mat-card-actions align="end">
-        <button mat-raised-button color="primary">See all</button>
+        <button mat-raised-button color="primary">Vedi tutto</button>
       </mat-card-actions>
-    </mat-card>
+    </div>
 
-    <mat-card class="col-3 col-xs-8 m-3">
-      <mat-card-header>
+    <div class="col-lg-6 col-sm-6">
+      <mat-card-header class="justify-content-center">
         <mat-card-title>Ultimi aggiornamenti</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <table class="table">
-          <tbody>
-            <tr *ngFor="let aggiornamento of ultimiAggiornamenti">
-              <th class="col" scope="row">Caso {{ aggiornamento.caso }}</th>
-              <th class="col" scope="row">{{ aggiornamento.stato }}</th>
-            </tr>
-          </tbody>
-        </table>
-      </mat-card-content>
-    </mat-card>
+      <table mat-table [dataSource]="ultimiAggiornamenti" class="mat-elevation-z8">
+        <ng-container matColumnDef="caso">
+          <th mat-header-cell *matHeaderCellDef>Caso</th>
+          <td mat-cell *matCellDef="let element">Caso {{ element.caso }}</td>
+        </ng-container>
+        <ng-container matColumnDef="stato">
+          <th mat-header-cell *matHeaderCellDef>Stato</th>
+          <td mat-cell *matCellDef="let element">{{ element.stato }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsUltimiAggiornamenti"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsUltimiAggiornamenti"></tr>
+      </table>
+    </div>
   </div>
 </div>

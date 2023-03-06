@@ -1,1 +1,31 @@
-<p>database works!</p>
+<div class="m-3" style="">
+  <div class="row">
+    <div class="col-10">
+      <form class="example-form">
+        <mat-form-field class="example-full-width w-100" appearance="fill">
+          <div class="d-flex">
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Cerca" />
+            <mat-icon>search</mat-icon>
+          </div>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col-1 d-flex justify-content-center">
+      <button mat-fab class="" style="background-color: #ffe519; color: black"><mat-icon>filter_list</mat-icon></button>
+    </div>
+    <div class="col-1 d-flex justify-content-center">
+      <button mat-fab class="" color="warn"><mat-icon>local_printshop</mat-icon></button>
+    </div>
+  </div>
+
+  <mat-card> </mat-card>
+  <div mat-dialog-actions align="end" class="">
+    <button mat-raised-button color="primary" class="m-3" type="submit">Modifica</button>
+    <button mat-raised-button color="secondary" class="m-3" type="submit">Nuovo</button>
+  </div>
+</div>
