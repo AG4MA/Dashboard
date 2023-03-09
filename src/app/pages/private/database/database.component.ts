@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { ProvaService } from 'src/app/services/prova.service';
+
 
 @Component({
   selector: 'app-database',
@@ -8,9 +10,18 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrls: ['./database.component.css']
 })
 export class DatabaseComponent implements OnInit {
+
+  constructor (private prova:ProvaService){}
+
   myControl = new FormControl<string | any>('');
   options: any[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
   filteredOptions!: Observable<any[]>;
+
+  //test
+  testVariabile:string = "testo prova";
+
+  
+
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -32,6 +43,8 @@ export class DatabaseComponent implements OnInit {
     return user && user.name ? user.name : '';
   }
 
-
+  metodoProva(){
+    this.prova.callHttp();
+  }
 
 }
