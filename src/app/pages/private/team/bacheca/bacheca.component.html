@@ -4,14 +4,18 @@
     <mat-card-title> Bacheca </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item style="margin-top: 10px" align="end" role="listitem" *ngFor="let msg of messageList">
-        <span style="font-size: 12px">{{ msg.userName }}</span>
-        <div>
-          {{ msg.messageText }}
-        </div>
-      </mat-list-item>
-    </mat-list>
+    <div class="messages" style="height: 8rem; overflow: scroll">
+      <mat-list role="list">
+        <mat-list-item class="message" role="listitem" *ngFor="let msg of messageList">
+          <span class="d-flex" [ngClass]="msg.fromBackend ? 'justify-content-start' : 'justify-content-end'" style="font-size: 12px">{{
+            msg.userName
+          }}</span>
+          <div class="d-flex" [ngClass]="msg.fromBackend ? 'justify-content-start' : 'justify-content-end'" style="margin-top: -9px">
+            {{ msg.messageText }}
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
     <mat-form-field class="example-form-field w-100">
       <mat-label>Inserisci il messaggio</mat-label>
       <input matInput type="text" [(ngModel)]="currentMessage" />

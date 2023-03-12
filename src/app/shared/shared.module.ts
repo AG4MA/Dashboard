@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { momentAdapterFactory } from '../app.module';
 import { MaterialModule } from '../material/material.module';
 import { AppNavigationComponent } from '../pages/private/app-navigation/app-navigation.component';
 import { DatabaseComponent } from '../pages/private/database/database.component';
@@ -34,6 +37,8 @@ const COMPONENTS = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory })
   ],
   exports: [
     ...COMPONENTS
