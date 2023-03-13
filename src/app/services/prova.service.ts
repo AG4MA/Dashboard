@@ -2,24 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
-const miohttp = "http://localhost:8080/";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProvaService {
+  miohttp = "http://localhost:8080/";
 
-
-
-  constructor(private http:HttpClient) { }
-
-
+  constructor(private http: HttpClient) { }
 
   callHttp() {
-    this.http.get(miohttp + "ciao")
-    .subscribe(dati  => {
-      console.log(dati);
-    });
+    this.http.get(this.miohttp + "ciao")
+      .subscribe(dati => {
+        console.log(dati);
+      });
   }
 
 }

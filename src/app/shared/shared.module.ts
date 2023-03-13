@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DxCheckBoxModule, DxHtmlEditorModule, DxSelectBoxModule } from 'devextreme-angular';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { momentAdapterFactory } from '../app.module';
 import { MaterialModule } from '../material/material.module';
 import { AppNavigationComponent } from '../pages/private/app-navigation/app-navigation.component';
 import { DatabaseComponent } from '../pages/private/database/database.component';
@@ -11,7 +13,6 @@ import { ImpostazioniComponent } from '../pages/private/impostazioni/impostazion
 import { BachecaComponent } from '../pages/private/team/bacheca/bacheca.component';
 import { CalendarComponent } from '../pages/private/team/calendar/calendar.component';
 import { TeamComponent } from '../pages/private/team/team.component';
-import { TeamModule } from '../pages/private/team/team.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 
@@ -36,9 +37,8 @@ const COMPONENTS = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    DxCheckBoxModule,
-    DxHtmlEditorModule,
-    DxSelectBoxModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory })
   ],
   exports: [
     ...COMPONENTS

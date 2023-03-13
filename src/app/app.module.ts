@@ -7,6 +7,14 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProvaService } from './services/prova.service';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
+import * as moment from 'moment';
+import { FlatpickrModule } from 'angularx-flatpickr';
+
+export function momentAdapterFactory() {
+  return adapterFactory(moment);
+};
 
 
 
@@ -20,7 +28,7 @@ import { ProvaService } from './services/prova.service';
     RouterModule,
     AppRoutingModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [ProvaService],
   bootstrap: [AppComponent]
